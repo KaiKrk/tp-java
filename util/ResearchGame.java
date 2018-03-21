@@ -32,27 +32,29 @@ public class ResearchGame {
 		String tabcombinaison[] = combinaison.split("");
 		int indice = 0;
 		System.out.print("Voici l'indice : ");
-		for (String i : tabcombinaison) {
-			
-			try {
-			int reponsebis = Integer.parseInt(tabreponse[indice]);
-			int combinaisonbis =Integer.parseInt(i);
-				if (combinaisonbis < reponsebis) {
-					System.out.print("+");
-				}else if ( combinaisonbis > reponsebis) {
-					System.out.print("-");
-				}else System.out.print("=");
-				indice++;
-			}		
-			catch (Exception e) {
-//				e.printStackTrace();
-				scan.nextLine();
-			}
-			
+			for (String i : tabcombinaison) {
+				
+				try {
+				int reponsebis = Integer.parseInt(tabreponse[indice]);
+				int combinaisonbis =Integer.parseInt(i);
+					if (combinaisonbis < reponsebis) {
+						System.out.print("+");
+					}else if ( combinaisonbis > reponsebis) {
+						System.out.print("-");
+					}else System.out.print("=");
+					indice++;
+				}		
+				catch (Exception e) {
+	//				e.printStackTrace();
+					scan.nextLine();
+				}
+				
+		
 		}
+	
 		System.out.println("\n"+"Vous avez rentrer : " +combinaison);
-		if (combinaison.equals(reponsestr)) {
-			essai = 0; System.out.println("Vous avez réussi !!!");
+		if (combinaisonint == reponse) {
+	 System.out.println("Vous avez réussi !!!");break essai;
 		}else {essai --;
 			System.out.println("Il vous reste : "+ essai+" essai(s)");
 		}
