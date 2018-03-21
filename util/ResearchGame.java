@@ -5,45 +5,62 @@ import java.util.Scanner;
 
 public class ResearchGame {
 		Scanner scan = new Scanner(System.in);
-		static	Random randomnum = new Random();
-	public int randomnumber() {
-		int number = randomnum.nextInt(10000);
+		Random randomnum = new Random();
+		int reponse; String combinaison; int combinaisonint;int essai = 5;;
+			public void test() {	
 		while(true) {
-		if (number > 999 ) {break;} else {randomnumber();}
+			reponse = randomnum.nextInt(10000);
+			if(reponse > 999) {break;}
 		}
-		return number;
-	
-	}
-	
-	private final int solution = randomnumber();		
-	
-	public void research() {
-				String combinaison ;
-				String annonce = "Bienvenue dans le Jeu de Recherche\n Le but est de trouver la combinaison secrete, qui se compose de 4 chiffres\n "
-						+ "Des indices vous permetrons de trouver la bonne combinaison + ou - et si le chiffre est le bon = sera affiché\n"
-						+" Bonne Chance";
-				System.out.println(annonce);
-				
-			code : while(true) {
-				System.out.println("Veuillez rentrer votre premiere combinaison de 4 chiffres : ");
-				combinaison = scan.nextLine();
+		String reponsestr = Integer.toString(reponse);
+		String tabreponse[] = reponsestr.split("");
+	essai: while(essai != 0) {
+		code : while(true) {
+			System.out.println("Veuillez rentrer votre combinaison de 4 chiffres : ");
+			combinaison = scan.nextLine();
 				try {
-					int newcombinaison =Integer.parseInt(combinaison);
 					
-					if (newcombinaison <= 9999) {break code;}
-					}
-				
+					if (combinaison.length() == 4) { 
+						combinaisonint=Integer.parseInt(combinaison);
+					break code;}
+				}
 				catch (Exception e) {
-//					e.printStackTrace();
+	//				e.printStackTrace();
 					scan.nextLine();
 				}
+		}
+		String tabcombinaison[] = combinaison.split("");
+		int indice = 0;
+		System.out.print("Voici l'indice : ");
+		for (String i : tabcombinaison) {
+			
+			try {
+			int reponsebis = Integer.parseInt(tabreponse[indice]);
+			int combinaisonbis =Integer.parseInt(i);
+				if (combinaisonbis < reponsebis) {
+					System.out.print("+");
+				}else if ( combinaisonbis > reponsebis) {
+					System.out.print("-");
+				}else System.out.print("=");
+				indice++;
+			}		
+			catch (Exception e) {
+//				e.printStackTrace();
+				scan.nextLine();
 			}
-				
-				String[] tab = combinaison.split("");
-				
-				
-				
-				
-				System.out.println(solution);
+			
+		}
+		System.out.println("\n"+"Vous avez rentrer : " +combinaison);
+		if (combinaison.equals(reponsestr)) {
+			essai = 0; System.out.println("Vous avez réussi !!!");
+		}else {essai --;
+			System.out.println("Il vous reste : "+ essai+" essai(s)");
+		}
+	}
+		if(essai ==0)
+		System.out.println("\nLa Solution est : "+ reponse);
 			}
+	
 }
+
+

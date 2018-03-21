@@ -7,36 +7,35 @@ public class ResearchGameTest {
 		Random randomnum = new Random();
 		int essai = 4;int newcombinaison = 0 ;
 		
-			int areponse = randomnum.nextInt(9);
-			int breponse = randomnum.nextInt(9);
-			int creponse = randomnum.nextInt(9);
-			int dreponse = randomnum.nextInt(9);
+			int areponse = randomnum.nextInt(10);
+			int breponse = randomnum.nextInt(10);
+			int creponse = randomnum.nextInt(10);
+			int dreponse = randomnum.nextInt(10);
 		
-		int solution [] = {areponse,breponse,creponse,dreponse};
+		
 		int reponse = areponse*1000 +breponse *100 +creponse *10 +dreponse;
 		
 		String reponsebis = Integer.toString(reponse);
-		String combinaison ; int indice = 0;
+		String tabreponse  [] = reponsebis.split(""); 
+		String combinaison ;
 		
 		String annonce = "Bienvenue dans le Jeu de Recherche\n Le but est de trouver la combinaison secrete, qui se compose de 4 chiffres\n "
 				+ "Des indices vous permetrons de trouver la bonne combinaison + ou - et si le chiffre est le bon = sera affiché\n";
-		System.out.println(annonce + "Selectionnez la difficulté : \n1)Facile = 10 essais\n2)Normal = 7 essais\n3)Dificile = 4 essais");
+		System.out.println(annonce + "Selectionnez la difficulté : \n1)Facile = 8 essais\n2)Normal = 6 essais\n3)Dificile = 4 essais");
 		int niveau = scan.nextInt();
 			switch(niveau) {
 			
-			case 1 : essai = 10; System.out.println("Mode Facile : " + essai + "essais");break;
-			case 2 : essai = 7; System.out.println("Mode Normal : " + essai +"essais");break;
+			case 1 : essai = 8; System.out.println("Mode Facile : " + essai + "essais");break;
+			case 2 : essai = 6; System.out.println("Mode Normal : " + essai +"essais");break;
 			case 3 : essai = 4; System.out.println("Mode Difficile :" + essai + "essais");break;
 			
 			default : essai = 10;System.out.println("Mode Facile : " + essai + "essais");
 			}
 		
-		
-		
- partie : while(essai != 0) {		
+ partie : while(essai != 0) {	
 	code : while(true) {
-		System.out.println("Veuillez rentrer votre premiere combinaison de 4 chiffres : ");
 		combinaison = scan.nextLine();
+		System.out.println("Veuillez rentrer votre 1ere combinaison de 4 chiffres : ");
 		try {
 			
 			if (combinaison.length() == 4) { 
@@ -52,7 +51,6 @@ public class ResearchGameTest {
 		
 	}
 		String[] tab = combinaison.split("");
-		String[] tabreponse = reponsebis.split("");
 		int a = Integer.parseInt(tab[0]);
 		int b = Integer.parseInt(tab[1]);
 		int c = Integer.parseInt(tab[2]);
