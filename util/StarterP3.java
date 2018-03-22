@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class StarterP3 {
 		Scanner scan = new Scanner(System.in);
 		ResearchGame research = new ResearchGame();
+		ResearchGameDef researchdef = new ResearchGameDef();
 		public void start() {
 			String welcome = "-------------------------------------\n";
 			welcome += "***Bienvenue dans le Jeu***\n";
@@ -29,7 +30,7 @@ public class StarterP3 {
 					switch (game) {
 						case 1:
 							//research.research();
-							research.test();
+							researchdef.researchdef();
 							break boucle;
 						case 2:
 							MastermindGame.mastermind();

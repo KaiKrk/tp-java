@@ -9,7 +9,7 @@ public class ResearchGameDef {
 				+ "et l'ordinateur va essayer de trouver la combinaison");
 		Scanner scan = new Scanner(System.in);
 		Random randomnum = new Random();
-		String combinaison; int solution;
+		String combinaison; int solution; int reponseprg;int verifreponseprg = 0;
 		
 		
 		code : while(true) {
@@ -30,16 +30,53 @@ public class ResearchGameDef {
 		}
 		
 		String[] tab = combinaison.split("");
-		int asolution = Integer.parseInt(tab[0]);
-		int bsolution = Integer.parseInt(tab[1]);
-		int csolution = Integer.parseInt(tab[2]);
-		int dsolution = Integer.parseInt(tab[3]);
 		
-		int areponse = randomnum.nextInt(10);
-		int breponse = randomnum.nextInt(10);
-		int creponse = randomnum.nextInt(10);
-		int dreponse = randomnum.nextInt(10);
-		
-		
+		while(true) {
+			reponseprg = randomnum.nextInt(10000);
+			if(reponseprg > 999) {break;}
+		}
+		String reponsestr = Integer.toString(reponseprg);
+		String[] tabreponseprg = reponsestr.split("");
+		int indice = 0; int essai = 10;
+		System.out.println("****" + combinaison);
+partie : while(essai != 0) {
+	System.out.print(" \nL'ordinateur a saisi :");
+	for (String newreponse : tabreponseprg) {
+		System.out.print(newreponse);
+	}
+				for (int nbboucle = 0; nbboucle < 4; nbboucle++) {
+					try {
+						int reponseprgbis = Integer.parseInt(tabreponseprg[indice]);
+						int combinaisonbis = Integer.parseInt(tab[indice]);
+						 if(reponseprgbis < combinaisonbis) {
+							 int min = reponseprgbis;
+							 int changeplus = randomnum.nextInt(9 - min + 1) + min;
+							 tabreponseprg[indice] = Integer.toString(changeplus);
+						 						indice ++;			}
+						 else if(reponseprgbis > combinaisonbis) {
+							 int max = reponseprgbis;
+							 int changeminus = randomnum.nextInt(max - 0 + 1 )+ 0;
+							 tabreponseprg[indice] = Integer.toString(changeminus);
+						 									}
+						 indice ++;
+						 }
+					catch (Exception e) {
+		//				e.printStackTrace();
+						scan.nextLine();
+										}
+				
+		for(String j : tabreponseprg) {
+			int x = 1000;
+			verifreponseprg = Integer.parseInt(j)*x;
+			x = x/10;
+		}
+		if (verifreponseprg == solution) {
+			System.out.println("L'Ordinateur vous a battu ! :( ");break partie;
+		}else {essai--;}System.out.println("\nIl reste "+essai+" essai(s)");
+}	
+	if(essai ==0) {
+		System.out.println("L'Ordinateur n'a pas trouvé votre combinaison.\nVous remportez cette partie!");
+	}
 	}
 }
+	}
